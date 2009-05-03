@@ -15,7 +15,8 @@ Gem::Specification.new do |s|
   s.files = [
     "README.markdown",
     "Rakefile",
-    "VERSION.yml"
+    "VERSION.yml",
+    "lib/validates_existence.rb"
   ]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/perfectline/validates_existence/tree/master}
