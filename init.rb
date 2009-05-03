@@ -1,1 +1,1 @@
-require 'locale_routing'
+require 'validates_existence'
