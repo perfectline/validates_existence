@@ -2,7 +2,7 @@
 
 This plugin library adds ActiveRecord models a way to check if a `:belongs_to` association actually exists upon saving.  
 This is achieved via adding a `validates_existence_of` validator to the base validations module.  
-It also supports `:allow_nil => true/false` and `:polymorphic => true' associations.
+It also supports `:allow_nil => true/false` and `:polymorphic => true` associations.
 
 ### Example
     class Pony < ActiveRecord::Base
@@ -41,8 +41,8 @@ This would be your customized en.yaml:
 This plugin is inspired by ideas from **Josh Susser**
 
 ## Authors
-Tanel Suurhans - tanel.suurhans_at_perfectline_d0t_ee  
-Tarmo Lehtpuu - tarmo.lehtpuu_at_perfectline_d0t_ee
+**Tanel Suurhans** - tanel.suurhans_at_perfectline_d0t_ee  
+**Tarmo Lehtpuu** - tarmo.lehtpuu_at_perfectline_d0t_ee
 
 ## License
 Copyright 2009 by PerfectLine LLC (<http://www.perfectline.co.uk>) and is released under the MIT license.
