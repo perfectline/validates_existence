@@ -47,4 +47,4 @@ module Perfectline
   end
 end
 
-ActiveRecord::Base.send(:extend, Perfectline::Validations::ValidatesExistence)
+ActiveRecord::Base.send(:include, Perfectline::Validations::ValidatesExistence)
