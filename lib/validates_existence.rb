@@ -9,7 +9,7 @@ module Perfectline
       module ClassMethods
 
         def validates_existence_of(*attr_names)
-          configuration = {:message => "does not exist", :on => :save}
+          configuration = {:message => :invalid, :on => :save}
           configuration.update(attr_names.extract_options!.symbolize_keys)
 
           send(validation_method(configuration[:on] || :save), configuration) do |record|
