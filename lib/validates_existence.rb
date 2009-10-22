@@ -9,7 +9,7 @@ module Perfectline
       module ClassMethods
 
         def validates_existence_of(*attr_names)
-          configuration = {:message => :invalid, :on => :save}
+          configuration = {:message => "does not exist", :on => :save}
           configuration.update(attr_names.extract_options!.symbolize_keys)
 
           send(validation_method(configuration[:on] || :save), configuration) do |record|
@@ -37,7 +37,9 @@ module Perfectline
                 association_class = association.klass
               end
 
-              record.errors.add(attr, :existence, :default => configuration[:message]) unless association_class.exists?(value)
+              unless association_class.exists?(value)
+                record.errors.add(attr, :existence, :default => configuration[:message])
+              end 
             end
           end
         end
