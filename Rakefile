@@ -9,12 +9,13 @@ task :default => :test
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |jewel|
-    jewel.name = 'validates_existence'
-    jewel.summary = 'Validates Rails model belongs_to association existence.'
-    jewel.email = 'tanel.suurhans@perfectline.ee'
-    jewel.homepage = 'http://github.com/perfectline/validates_existence/tree/master'
+    jewel.name        = 'validates_existence'
+    jewel.summary     = 'Validates Rails model belongs_to association existence.'
+    jewel.email       = ['tanel.suurhans@perfectline.ee', 'tarmo.lehtpuu@perfectline.ee']
+    jewel.homepage    = 'http://github.com/perfectline/validates_existence/tree/master'
     jewel.description = 'A library for validating model association existence.'
-    jewel.authors = ["Tanel Suurhans", "Tarmo Lehtpuu"]
+    jewel.authors     = ["Tanel Suurhans", "Tarmo Lehtpuu"]
+    jewel.files       = FileList["lib/**/*.rb", "*.rb", "MIT-LICENCE", "README.markdown"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
