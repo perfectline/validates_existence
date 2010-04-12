@@ -1,7 +1,8 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'rcov/rcovtask'
+require 'rake/gempackagetask'
+require 'rake/clean'
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -25,7 +26,7 @@ desc 'Test the plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
+  t.pattern = 'test/**/*.rb'
   t.verbose = true
 end
 
@@ -36,11 +37,4 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README.markdown')
   rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-desc 'Generate code coverage report'
-Rcov::RcovTask.new(:rcov) do |rcov|
-  rcov.libs << 'test'
-  rcov.test_files = FileList['test/*_test.rb']
-  rcov.verbose = true
 end
