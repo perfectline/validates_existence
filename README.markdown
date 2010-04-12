@@ -1,3 +1,5 @@
+TODO: rails3 support
+
 # ValidatesExistence
 
 This plugin library adds ActiveRecord models a way to check if a `:belongs_to` association actually exists upon saving.  
