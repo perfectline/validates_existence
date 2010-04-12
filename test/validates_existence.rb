@@ -9,29 +9,9 @@ require 'active_record/migration'
 
 ActiveRecord::Migration.verbose = false
 ActiveRecord::Base.establish_connection(
-        "adapter"   => "sqlite3",
-        "database"  => ":memory:"
+        "adapter" => "sqlite3",
+        "database" => ":memory:"
 )
-
-def setup_db
-  ActiveRecord::Schema.define(:version => 1) do
-
-    create_table :names, :force => true do |t|
-      t.column  :name, :string
-    end
-
-    create_table :users, :force => true do |t|
-      t.references :name
-      t.references :relation, :polymorphic => true
-    end
-    
-  end
-end
-
-def tear_db
-  ActiveRecord::Base.connection.drop_table(:users)
-  ActiveRecord::Base.connection.drop_table(:names)
-end
 
 require File.join(File.dirname(__FILE__), '..', 'rails', 'init.rb')
 
@@ -71,11 +51,23 @@ end
 class ValidatesExistenceTest < Test::Unit::TestCase
 
   def setup
-    setup_db
+    ActiveRecord::Schema.define(:version => 1) do
+
+      create_table :names, :force => true do |t|
+        t.column :name, :string
+      end
+
+      create_table :users, :force => true do |t|
+        t.references :name
+        t.references :relation, :polymorphic => true
+      end
+
+    end
   end
 
   def teardown
-    tear_db
+    ActiveRecord::Base.connection.drop_table(:users)
+    ActiveRecord::Base.connection.drop_table(:names)
   end
 
   def test_save_with_no_relation
