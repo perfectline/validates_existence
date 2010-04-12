@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
     "README.markdown",
      "init.rb",
      "install.rb",
-     "lib/validates_existence.rb"
+     "lib/validates_existence_test.rb"
   ]
   s.homepage = %q{http://github.com/perfectline/validates_existence/tree/master}
   s.rdoc_options = ["--charset=UTF-8"]
