@@ -16,7 +16,7 @@ begin
     jewel.homepage    = 'http://github.com/perfectline/validates_existence/tree/master'
     jewel.description = 'A library for validating model association existence.'
     jewel.authors     = ["Tanel Suurhans", "Tarmo Lehtpuu"]
-    jewel.files       = FileList["lib/**/*.rb", "*.rb", "MIT-LICENCE", "README.markdown"]
+    jewel.files       = FileList["rails/*.rb", "lib/**/*.rb", "*.rb", "MIT-LICENCE", "README.markdown"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
