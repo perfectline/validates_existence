@@ -1,4 +1,5 @@
 if Rails::VERSION::MAJOR >= 3
+  require "active_model"
   require "rails3/validator"
 
   ActiveModel::Validations.__send__(:include, Perfectline::ValidatesExistence::InstanceMethods)
