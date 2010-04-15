@@ -23,7 +23,10 @@ class TestValidatesExistence < Test::Unit::TestCase
   end
   
   def test_save_with_no_relation
-    assert_equal User.new.save, false
+    user = User.new
+    assert_equal    user.save, false
+    assert_not_nil  user.errors.on(:name)
+    assert_not_nil  user.errors.on(:name)
   end
 
   def test_save_with_relation
@@ -50,6 +53,19 @@ class TestValidatesExistence < Test::Unit::TestCase
 
   def test_poly_relation_with_allow_nil
     assert_equal UserWithPolyAllowNil.new.save, true
+  end
+
+  def test_argument_error
+    assert_raise ArgumentError do
+      UserWithHasMany.new.save
+    end
+  end
+
+  def test_errors_on_one_field
+    user = UserWithBoth.new
+    user.save
+    assert_not_nil  user.errors.on(:name)
+    assert_nil      user.errors.on(:name_id)
   end
 
 end

@@ -1,36 +1,36 @@
 module Perfectline
   module ValidatesExistence
 
-    def validates_existence_of(*attr_names)
-      configuration = {:message => "does not exist", :on => :save}
-      configuration.update(attr_names.extract_options!.symbolize_keys)
+    def validates_existence_of(*attribute_names)
+      options = attribute_names.extract_options!.symbolize_keys
+      options[:message] ||= :existence
+      options[:both]    = true unless options.has_key?(:both)
 
-      send(validation_method(configuration[:on] || :save), configuration) do |record|
+      validates_each(attribute_names, options) do |record, attribute, value|
+        normalized  = attribute.to_s.sub(/_id$/, "").to_sym
+        association = record.class.reflect_on_association(normalized)
 
-        attr_names.each do |attr|
-          association = reflect_on_association(attr.to_s.sub(/_id$/, '').to_sym)
+        if association.nil? or !association.belongs_to?
+          raise ArgumentError, "Cannot validate existence on #{normalized}, not a :belongs_to association"
+        end
 
-          if association.nil? || association.macro != :belongs_to
-            raise ArgumentError, "Can not validate existence on #{attribute}, not a belongs_to association."
-          end
+        target_class = nil
 
-          value = record.__send__(association.primary_key_name)
-          next if value.nil? && configuration[:allow_nil]
+        # dealing with polymorphic belongs_to
+        if association.options.has_key?(:foreign_type)
+          foreign_type = record.__send__(association.options.fetch(:foreign_type))
+          target_class = foreign_type.constantize unless foreign_type.nil?
+        else
+          target_class = association.klass
+        end
 
-          if association.options.has_key?(:foreign_type)
-            foreign_type = record.__send__(association.options[:foreign_type])
+        if target_class.nil? or !target_class.exists?(value)
+          record.errors.add(attribute, options[:message], :default => "does not exist")
 
-            if not foreign_type.blank?
-              association_class = foreign_type.constantize
-            else
-              record.errors.add(attr, :existence, :default => configuration[:message]) and next
-            end
-          else
-            association_class = association.klass
-          end
-
-          unless association_class.exists?(value)
-            record.errors.add(attr, :existence, :default => configuration[:message])
+          # add the error on both :relation and :relation_id
+          if options[:both]
+            normalized = attribute.to_s.ends_with?("_id") ? normalized : "#{attribute}_id"
+            record.errors.add(normalized, options[:message], :default => "does not exist")
           end
         end
       end

@@ -7,6 +7,7 @@ module Perfectline
         def initialize(options)
           # set the default message if its unspecified
           options[:message] ||= :existence
+          options[:both]    ||= true
           super(options)
         end
 
