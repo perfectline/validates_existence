@@ -18,7 +18,9 @@ First install the gem:
     # Gemfile
     gem "validates_existence", ">= 0.4"
 
-### Example
+### Example usage
+
+#### Rails 2.x
     class Pony < ActiveRecord::Base
       belongs_to :wizard
       belongs_to :person, :polymorphic => true
@@ -34,12 +36,28 @@ First install the gem:
     pony.valid?
 
     pony.errors.on(:wizard) #=> "does not exist"
+
+#### Rails 3
+
+In addition to the "old" functionality, Rails 3 version introduces a new option `:both => true`.
+This adds the error message on both `relation` and `relation_id` fields for convenience.
+
+    class Unicorn < ActiveRecord::Base
+      belongs_to :wizard
+      belongs_to :person, :polymorphic => true
+
+      validates :wizard,    :existence => true
+      validates :wizard_id, :existence => true # works both way
+      validates :person,    :existence => { :allow_nil => true, :both => true }
+
+      # the old method is supported also
+      validates_existence :wizard
+    end
     
 ## I18N
 
 The default error message is `does not exist`.  
 This can be customized via Rails I18N like any other validation error message via `:existence` key.
-
 
 ### Example
 
@@ -59,4 +77,4 @@ This plugin is inspired by ideas from **Josh Susser**
 **Tarmo Lehtpuu** - tarmo.lehtpuu_at_perfectline_d0t_ee
 
 ## License
-Copyright 2009 by PerfectLine LLC (<http://www.perfectline.co.uk>) and is released under the MIT license.
+Copyright 2010 by PerfectLine LLC (<http://www.perfectline.co.uk>) and is released under the MIT license.
