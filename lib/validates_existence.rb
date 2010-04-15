@@ -1,5 +1,4 @@
 if Rails::VERSION::MAJOR >= 3
-  ActiveRecord::VERSION
   require "active_model"
   require "rails3/validator"
 

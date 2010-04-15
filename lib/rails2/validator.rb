@@ -4,7 +4,7 @@ module Perfectline
     def validates_existence_of(*attribute_names)
       options = attribute_names.extract_options!.symbolize_keys
       options[:message] ||= :existence
-      options[:both]    = true unless options.has_key?(:both)
+      options[:both0]    = true unless options.has_key?(:both)
 
       validates_each(attribute_names, options) do |record, attribute, value|
         normalized  = attribute.to_s.sub(/_id$/, "").to_sym
