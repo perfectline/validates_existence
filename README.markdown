@@ -10,11 +10,11 @@ Version 0.4.0 also adds Rails 3 support  (the appropriate version is used automa
 First install the gem:
     sudo gem install validates_existence
 
-Configuring Rails 2
+#### Rails 2.x
     # environment.rb
     config.gem "validates_existence", :source => "http://rubygems.org"
 
-Configuring Rails 3
+#### Rails 3
     # Gemfile
     gem "validates_existence", ">= 0.4"
 
