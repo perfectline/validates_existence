@@ -4,6 +4,20 @@ This plugin library adds ActiveRecord models a way to check if a `:belongs_to` a
 This is achieved via adding a `validates_existence_of` validator to the base validations module.  
 It also supports `:allow_nil => true/false` and `:polymorphic => true` associations.
 
+Version 0.4.0 also adds Rails 3 support  (the appropriate version is used automatically).
+
+### Installation
+First install the gem:
+    sudo gem install validates_existence
+
+Configuring Rails 2
+    # environment.rb
+    config.gem "validates_existence", :source => "http://rubygems.org"
+
+Configuring Rails 3
+    # Gemfile
+    gem "validates_existence", ">= 0.4"
+
 ### Example
     class Pony < ActiveRecord::Base
       belongs_to :wizard
