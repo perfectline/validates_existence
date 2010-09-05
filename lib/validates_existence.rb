@@ -42,6 +42,7 @@ module Perfectline
       extend ActiveSupport::Concern
 
       class ExistenceValidator < ActiveModel::EachValidator
+
         def initialize(options)
           # set the default message if its unspecified
           options[:message] ||= :existence
@@ -84,13 +85,13 @@ module Perfectline
           validates_with ExistenceValidator, _merge_attributes(attr_names)
         end
       end
-    end
 
+    end
   end
 end
 
 if Rails::VERSION::MAJOR >= 3
   ActiveRecord::Base.send(:include, Perfectline::ValidatesExistence::Rails3)
 else
-  ActiveRecord::Base.extend Perfectline::ValidatesExistence::Rails2
+  ActiveRecord::Base.send(:extend,  Perfectline::ValidatesExistence::Rails2)
 end
