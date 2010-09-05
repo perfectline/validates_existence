@@ -80,11 +80,11 @@ module Perfectline
         end
 
       end
-    end
 
-    module ClassMethods
-      def validates_existence_of(*attr_names)
-        validates_with ExistenceValidator, _merge_attributes(attr_names)
+      module ClassMethods
+        def validates_existence_of(*attr_names)
+          validates_with ExistenceValidator, _merge_attributes(attr_names)
+        end
       end
     end
 
