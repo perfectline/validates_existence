@@ -7,12 +7,23 @@ It also supports `:allow_nil => true/false` and `:polymorphic => true` associati
 Version 0.4.0 also adds Rails 3 support  (the appropriate version is used automatically).
 Version 0.5.0 introduces a new option - `:both` and changes the default behaviour of error attaching.
 
+#### Changes in 0.5.3
+
+Cleaned up the code, the whole library is now in one file with separate modules for Rails 2 and Rails 3.
+Also renamed `should_macros` folder to `shoulda`.
+
 #### Changes in 0.5.0
 
 In verions prior to 0.5.0 the error message was attached to the field which the validation was defined on.
 For example if the validation was on `:relation_id` field, then the error was accessible via `object.errors.on(:relation_id)`.
 The new default behaviour is attaching the error on both fields: `:relation` and `:relation_id` for convenience.
 This functionality can be controlled through the `:both` option, which accepts true/false value and defaults to true.
+
+#### TODO
+
++ replace T::U tests with RSpec
++ create RSpec Matcher
++ separate set of tests for Rails 3
 
 ### Installation
 First install the gem:
@@ -57,7 +68,7 @@ First install the gem:
       validates :person,    :existence => { :allow_nil => true, :both => false }
 
       # the old method is supported also
-      validates_existence :wizard
+      validates_existence_of :wizard
     end
     
 ## I18N

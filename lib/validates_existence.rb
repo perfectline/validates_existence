@@ -19,7 +19,7 @@ module Perfectline
 
           # dealing with polymorphic belongs_to
           if association.options.has_key?(:foreign_type)
-            foreign_type = record.__send__(association.options.fetch(:foreign_type))
+            foreign_type = record.send(association.options.fetch(:foreign_type))
             target_class = foreign_type.constantize unless foreign_type.nil?
           else
             target_class = association.klass
@@ -62,13 +62,13 @@ module Perfectline
 
           # dealing with polymorphic belongs_to
           if association.options.has_key?(:foreign_type)
-            foreign_type = record.__send__(association.options.fetch(:foreign_type))
+            foreign_type = record.send(association.options.fetch(:foreign_type))
             target_class = foreign_type.constantize unless foreign_type.nil?
           else
             target_class = association.klass
           end
 
-          if target_class.nil? or !target_class.exists?(value)
+          if value.nil? or target_class.nil? or !target_class.exists?(value)
             record.errors.add(attribute, options[:message], :default => "does not exist")
 
             # add the error on both :relation and :relation_id
