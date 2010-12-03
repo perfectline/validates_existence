@@ -26,11 +26,14 @@ module Perfectline
           end
 
           if target_class.nil? or !target_class.exists?(value)
-            record.errors.add(attribute, options[:message], :default => "does not exist")
+            errors = [attribute]
 
             # add the error on both :relation and :relation_id
             if options[:both]
               normalized = attribute.to_s.ends_with?("_id") ? normalized : "#{attribute}_id"
+              errors.push(normalized) unless errors.include? attribute
+            end
+            errors.each do | error |
               record.errors.add(normalized, options[:message], :default => "does not exist")
             end
           end
@@ -39,3 +42,4 @@ module Perfectline
     end
   end
 end
+
