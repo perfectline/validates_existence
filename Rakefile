@@ -1,7 +1,6 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'rcov/rcovtask'
 require 'rake/gempackagetask'
 require 'rake/clean'
 
@@ -40,10 +39,3 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-desc 'Generate code coverage report'
-Rcov::RcovTask.new(:rcov) do |rcov|
-  rcov.libs << 'test'
-  rcov.rcov_opts = %w(--exclude test,/usr/lib/ruby,/Library/Ruby,$HOME/.gem --sort coverage)
-  rcov.test_files = FileList['test/**/*_test.rb']
-  rcov.verbose = true
-end
