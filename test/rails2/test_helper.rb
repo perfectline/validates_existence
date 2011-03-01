@@ -1,6 +1,6 @@
 require 'rubygems'
 
-gem 'activerecord', '~> 2'
+gem 'rails', '2.3.8'
 
 require 'sqlite3'
 require 'test/unit'
@@ -13,7 +13,9 @@ ActiveRecord::Base.establish_connection(
         "database" => ":memory:"
 )
 
-require File.join(File.dirname(__FILE__), '..', 'rails', 'init.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rails2.rb')
+
+ActiveRecord::Base.send(:extend,  Perfectline::ValidatesExistence::Rails2)
 
 autoload :Name,                 File.join(File.dirname(__FILE__), 'models', 'name.rb')
 autoload :User,                 File.join(File.dirname(__FILE__), 'models', 'user.rb')
@@ -22,3 +24,4 @@ autoload :UserWithPoly,         File.join(File.dirname(__FILE__), 'models', 'use
 autoload :UserWithPolyAllowNil, File.join(File.dirname(__FILE__), 'models', 'user_with_poly_allow_nil.rb')
 autoload :UserWithHasMany,      File.join(File.dirname(__FILE__), 'models', 'user_with_has_many.rb')
 autoload :UserWithBoth,         File.join(File.dirname(__FILE__), 'models', 'user_with_both.rb')
+autoload :UserWithFk,           File.join(File.dirname(__FILE__), 'models', 'user_with_fk.rb')

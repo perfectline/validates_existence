@@ -12,7 +12,7 @@ module Perfectline
         def initialize(options)
           # set the default message if its unspecified
           options[:message] ||= :existence
-          options[:both]    = true unless options.has_key?(:both)
+          options[:both]    = true unless options.key?(:both)
           super(options)
         end
 
@@ -35,15 +35,14 @@ module Perfectline
           end
 
           if value.nil? or target_class.nil? or !target_class.exists?(value)
-             errors = [attribute]
+            errors = [attribute]
 
             # add the error on both :relation and :relation_id
             if options[:both]
-              normalized = attribute.to_s.ends_with?("_id") ? normalized : "#{attribute}_id"
-              errors.push(normalized) unless errors.include? attribute
+              errors.push(attribute.to_s.ends_with?("_id") ? normalized : association.primary_key_name)
             end
-            errors.each do | error |
-              record.errors.add(normalized, options[:message], :default => "does not exist")
+            errors.each do |error|
+              record.errors.add(error, options[:message], :message => "does not exist")
             end
           end
         end
