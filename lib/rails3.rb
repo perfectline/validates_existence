@@ -42,7 +42,7 @@ module Perfectline
               errors.push(attribute.to_s.ends_with?("_id") ? normalized : association.primary_key_name)
             end
             errors.each do |error|
-              record.errors.add(error, options[:message], :message => "does not exist")
+              record.errors.add(error, options[:message], :defaults => "does not exist")
             end
           end
         end
