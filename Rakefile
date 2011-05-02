@@ -23,10 +23,17 @@ rescue LoadError
 end
 
 desc 'Test the plugin.'
-Rake::TestTask.new(:test) do |t|
+Rake::TestTask.new(:test_rails2) do |t|
   t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
+  t.libs << 'test/rails2'
+  t.pattern = 'test/rails2/**/*_test.rb'
+  t.verbose = true
+end
+
+Rake::TestTask.new(:test_rails3) do |t|
+  t.libs << 'lib'
+  t.libs << 'test/rails3'
+  t.pattern = 'test/rails3/**/*_test.rb'
   t.verbose = true
 end
 
