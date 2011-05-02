@@ -42,8 +42,8 @@ module Perfectline
               normalized = attribute.to_s.ends_with?("_id") ? normalized : "#{attribute}_id"
               errors.push(normalized) unless errors.include? attribute
             end
-            errors.each do | error |
-              record.errors.add(normalized, options[:message], :default => "does not exist")
+            errors.each do |error|
+              record.errors.add(normalized, options[:message], :message => "does not exist")
             end
           end
         end
