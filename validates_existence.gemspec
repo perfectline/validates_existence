@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{validates_existence}
-  s.version = "0.5.6"
+  s.version = "0.5.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tanel Suurhans", "Tarmo Lehtpuu"]
@@ -27,28 +27,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.7.2}
   s.summary = %q{Validates Rails model belongs_to association existence.}
-  s.test_files = [
-    "test/rails2/models/name.rb",
-    "test/rails2/models/user.rb",
-    "test/rails2/models/user_with_allow_nil.rb",
-    "test/rails2/models/user_with_both.rb",
-    "test/rails2/models/user_with_fk.rb",
-    "test/rails2/models/user_with_has_many.rb",
-    "test/rails2/models/user_with_poly.rb",
-    "test/rails2/models/user_with_poly_allow_nil.rb",
-    "test/rails2/test_helper.rb",
-    "test/rails2/validates_existence_test.rb",
-    "test/rails3/models/name.rb",
-    "test/rails3/models/user.rb",
-    "test/rails3/models/user_with_allow_nil.rb",
-    "test/rails3/models/user_with_both.rb",
-    "test/rails3/models/user_with_fk.rb",
-    "test/rails3/models/user_with_has_many.rb",
-    "test/rails3/models/user_with_poly.rb",
-    "test/rails3/models/user_with_poly_allow_nil.rb",
-    "test/rails3/test_helper.rb",
-    "test/rails3/validates_existence_test.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
