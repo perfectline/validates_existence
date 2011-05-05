@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        existence: "really does not exists"

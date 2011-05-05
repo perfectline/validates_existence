@@ -91,6 +91,23 @@ class TestValidatesExistence < Test::Unit::TestCase
     assert_not_nil user.errors[:custom_id]
   end
 
+  def test_message_without_i18n
+    user = User.new :name_id => 100
+    user.save
+
+    assert_equal ["does not exist"], user.errors[:name]
+  end
+
+  def test_message_with_i18n
+    I18n.load_path << File.expand_path("#{File.dirname(__FILE__)}/test_data/locales/en.yml")
+    I18n.locale = :en
+
+    user = User.new :name_id => 100
+    user.save
+
+    assert_equal ["really does not exist"], user.errors[:name]
+  end
+
 end
 
 
