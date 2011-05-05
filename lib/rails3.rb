@@ -41,8 +41,11 @@ module Perfectline
             if options[:both]
               errors.push(attribute.to_s.ends_with?("_id") ? normalized : association.primary_key_name)
             end
+
+            messages = [:"#{record.class.i18n_scope}.errors.messages.existence", "does not exist"]
+
             errors.each do |error|
-              record.errors.add(error, options[:message], :message => "does not exist")
+              record.errors.add(error, options[:message], :message => messages)
             end
           end
         end
