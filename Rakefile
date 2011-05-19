@@ -37,6 +37,13 @@ Rake::TestTask.new(:test_rails3) do |t|
   t.verbose = true
 end
 
+Rake::TestTask.new(:test_rails31) do |t|
+  t.libs << 'lib'
+  t.libs << 'test/rails31'
+  t.pattern = 'test/rails31/**/*_test.rb'
+  t.verbose = true
+end
+
 desc 'Generate documentation plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
