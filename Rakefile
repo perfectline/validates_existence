@@ -43,13 +43,3 @@ Rake::TestTask.new(:test_rails31) do |t|
   t.pattern = 'test/rails31/**/*_test.rb'
   t.verbose = true
 end
-
-desc 'Generate documentation plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'ValidatesExistence'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.markdown')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
-

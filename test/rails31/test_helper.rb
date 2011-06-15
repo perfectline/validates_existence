@@ -1,7 +1,8 @@
 require 'rubygems'
 
-gem 'rails', :git => 'git://github.com/rails/rails'
+gem 'rails', '3.1.0.rc4'
 
+require 'rails'
 require 'sqlite3'
 require 'test/unit'
 require 'active_record'
@@ -13,9 +14,9 @@ ActiveRecord::Base.establish_connection(
         "database" => ":memory:"
 )
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rails31.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rails3.rb')
 
-ActiveRecord::Base.send(:include,  Perfectline::ValidatesExistence::Rails31)
+ActiveRecord::Base.send(:include,  Perfectline::ValidatesExistence::Rails3)
 
 autoload :Name,                 File.join(File.dirname(__FILE__), 'models', 'name.rb')
 autoload :User,                 File.join(File.dirname(__FILE__), 'models', 'user.rb')

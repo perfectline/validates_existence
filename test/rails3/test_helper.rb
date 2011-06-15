@@ -1,7 +1,8 @@
 require 'rubygems'
 
-gem 'rails', '3.0.5'
+gem 'rails', '~> 3.0.7'
 
+require 'rails'
 require 'sqlite3'
 require 'test/unit'
 require 'active_record'

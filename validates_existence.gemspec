@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{validates_existence}
-  s.version = "0.5.7"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tanel Suurhans", "Tarmo Lehtpuu"]
-  s.date = %q{2011-05-02}
+  s.date = %q{2011-06-15}
   s.description = %q{A library for validating model association existence.}
   s.email = ["tanel.suurhans@perfectline.ee", "tarmo.lehtpuu@perfectline.ee"]
   s.extra_rdoc_files = [
