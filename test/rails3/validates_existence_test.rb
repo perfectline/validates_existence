@@ -92,6 +92,8 @@ class TestValidatesExistence < Test::Unit::TestCase
   end
 
   def test_message_without_i18n
+    I18n.load_path << File.expand_path("./test/shared/locales/en.yml")
+    I18n.backend.send(:init_translations)
     I18n.locale = :en
 
     user = User.new :name_id => 100
@@ -101,7 +103,7 @@ class TestValidatesExistence < Test::Unit::TestCase
   end
 
   def test_message_with_i18n
-    I18n.load_path << File.expand_path("./test/rails3/test_data/locales/pt.yml")
+    I18n.load_path << File.expand_path("./test/shared/locales/pt.yml")
     I18n.backend.send(:init_translations)
     I18n.locale = :pt
 

@@ -1,0 +1,4 @@
+en:
+  activerecord:
+    errors:
+      messages:
