@@ -1,0 +1,5 @@
+pt:
+  activerecord:
+    errors:
+      messages:
+        existence: "inexistente"
