@@ -13,6 +13,7 @@ module Perfectline
           # set the default message if its unspecified
           options[:message] ||= :existence
           options[:both]    = true unless options.key?(:both)
+          options[:allow_new] = false unless options.key?(:allow_new)
           super(options)
         end
 
@@ -34,7 +35,7 @@ module Perfectline
             target_class = association.klass
           end
 
-          if value.nil? || target_class.nil? || !target_class.exists?(value)
+          if value.nil? || target_class.nil? || !exists?(target_class, value)
             errors = [attribute]
 
             # add the error on both :relation and :relation_id
@@ -53,6 +54,14 @@ module Perfectline
             errors.each do |error|
               record.errors.add(error, options[:message], :message => messages)
             end
+          end
+        end
+
+        def exists?(target_class, value)
+          if options[:allow_new]
+            value.new_record? or target_class.exists?(value)
+          else
+            target_class.exists?(value)
           end
         end
       end
