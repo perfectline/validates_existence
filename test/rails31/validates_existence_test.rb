@@ -83,6 +83,11 @@ class TestValidatesExistence < Test::Unit::TestCase
     assert_not_nil user.errors[:name]
   end
 
+  def test_save_with_new_record_and_allow_new
+    name = Name.new(:name => "foo")
+    assert_equal UserWithAllowNew.new(:name => name).save, true
+  end
+
   def test_save_with_custom_fk
     user = UserWithFk.new
     user.save
@@ -110,6 +115,5 @@ class TestValidatesExistence < Test::Unit::TestCase
 
     assert_equal ["inexistente"], user.errors[:name]
   end
-
 end
 

@@ -2,7 +2,7 @@
 
 This plugin library adds ActiveRecord models a way to check if a `:belongs_to` association actually exists upon saving.  
 This is achieved via adding a `validates_existence_of` validator to the base validations module.  
-It also supports `:allow_nil => true/false` and `:polymorphic => true` associations.
+It also supports `:allow_nil => true/false`, `:allow_new => true/false`, and `:polymorphic => true` associations.
 
 Version 0.4.0 also adds Rails 3 support  (the appropriate version is used automatically).
 Version 0.5.0 introduces a new option - `:both` and changes the default behaviour of error attaching.
