@@ -6,6 +6,7 @@ module Perfectline
         options = attribute_names.extract_options!.symbolize_keys
         options[:message] ||= :existence
         options[:both]    = true unless options.key?(:both)
+        options[:allow_new] = false unless options.key?(:allow_new)
 
         validates_each(attribute_names, options) do |record, attribute, value|
           normalized  = attribute.to_s.sub(/_id$/, "").to_sym
@@ -25,7 +26,13 @@ module Perfectline
             target_class = association.klass
           end
 
-          if target_class.nil? or !target_class.exists?(value)
+          if options[:allow_new]
+            exists = value.new_record? or target_class.exists?(value)
+          else
+            exists = target_class.exists?(value)
+          end
+
+          if target_class.nil? or !exists
             errors = [attribute]
 
             # add the error on both :relation and :relation_id
