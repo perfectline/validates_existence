@@ -58,11 +58,7 @@ module Perfectline
         end
 
         def exists?(target_class, value)
-          if options[:allow_new]
-            value.new_record? or target_class.exists?(value)
-          else
-            target_class.exists?(value)
-          end
+          (options[:allow_new] && value.new_record?) || target_class.exists?(value)
         end
       end
 
