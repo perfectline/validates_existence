@@ -1,12 +1,12 @@
-require 'rubygems'
+require "rubygems"
 
-gem 'rails', '~> 3.0.7'
+gem "rails", "~> 3.0.7"
 
-require 'rails'
-require 'sqlite3'
-require 'test/unit'
-require 'active_record'
-require 'active_record/base'
+require "rails"
+require "sqlite3"
+require "test/unit"
+require "active_record"
+require "active_record/base"
 
 ActiveRecord::Migration.verbose = false
 ActiveRecord::Base.establish_connection(
@@ -14,16 +14,15 @@ ActiveRecord::Base.establish_connection(
         "database" => ":memory:"
 )
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rails3.rb')
+require File.join(File.dirname(__FILE__), "..", "..", "lib", "validates_existence")
 
-ActiveRecord::Base.send(:include,  Perfectline::ValidatesExistence::Rails3)
-
-autoload :Name,                 File.join(File.dirname(__FILE__), 'models', 'name.rb')
-autoload :User,                 File.join(File.dirname(__FILE__), 'models', 'user.rb')
-autoload :UserWithAllowNil,     File.join(File.dirname(__FILE__), 'models', 'user_with_allow_nil.rb')
-autoload :UserWithAllowNew,     File.join(File.dirname(__FILE__), 'models', 'user_with_allow_new.rb')
-autoload :UserWithPoly,         File.join(File.dirname(__FILE__), 'models', 'user_with_poly.rb')
-autoload :UserWithPolyAllowNil, File.join(File.dirname(__FILE__), 'models', 'user_with_poly_allow_nil.rb')
-autoload :UserWithHasMany,      File.join(File.dirname(__FILE__), 'models', 'user_with_has_many.rb')
-autoload :UserWithBoth,         File.join(File.dirname(__FILE__), 'models', 'user_with_both.rb')
-autoload :UserWithFk,           File.join(File.dirname(__FILE__), 'models', 'user_with_fk.rb')
+autoload :Name,                 File.join(File.dirname(__FILE__), "models", "name.rb")
+autoload :User,                 File.join(File.dirname(__FILE__), "models", "user.rb")
+autoload :UserWithOldSyntax,    File.join(File.dirname(__FILE__), "models", "user_with_old_syntax.rb")
+autoload :UserWithAllowNil,     File.join(File.dirname(__FILE__), "models", "user_with_allow_nil.rb")
+autoload :UserWithAllowNew,     File.join(File.dirname(__FILE__), "models", "user_with_allow_new.rb")
+autoload :UserWithPoly,         File.join(File.dirname(__FILE__), "models", "user_with_poly.rb")
+autoload :UserWithPolyAllowNil, File.join(File.dirname(__FILE__), "models", "user_with_poly_allow_nil.rb")
+autoload :UserWithHasMany,      File.join(File.dirname(__FILE__), "models", "user_with_has_many.rb")
+autoload :UserWithBoth,         File.join(File.dirname(__FILE__), "models", "user_with_both.rb")
+autoload :UserWithFk,           File.join(File.dirname(__FILE__), "models", "user_with_fk.rb")

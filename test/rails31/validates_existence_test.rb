@@ -113,7 +113,13 @@ class TestValidatesExistence < Test::Unit::TestCase
     user = User.new :name_id => 100
     user.save
 
-    assert_equal ["inexistente"], user.errors[:name]
+    assert_equal %w(inexistente), user.errors[:name]
   end
+
+  def test_old_syntax
+    name = Name.create(:name => "foo")
+    assert_equal UserWithOldSyntax.new(:name => name).save, true
+  end
+
 end
 
