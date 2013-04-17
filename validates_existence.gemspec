@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
   s.files = [
     "README.markdown",
     "install.rb",
-    "lib/rails2.rb",
-    "lib/rails3.rb",
     "lib/validates_existence.rb",
     "rails/init.rb"
   ]

@@ -36,7 +36,7 @@ module Perfectline
 
             # add the error on both :relation and :relation_id
             if options[:both]
-              if ActiveRecord::VERSION::MINOR >= 1
+              if ActiveRecord::VERSION::MAJOR >= 3 && ActiveRecord::VERSION::MINOR >= 1
                 foreign_key = association.foreign_key
               else
                 foreign_key = association.primary_key_name
