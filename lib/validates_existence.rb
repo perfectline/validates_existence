@@ -13,6 +13,20 @@ module Perfectline
           super(options)
         end
 
+        def validate(record)
+          attributes.each do |attribute|
+            value = record.read_attribute_for_validation(attribute)
+            target_id = if !attribute.match(/_id$/) && options[:allow_nil]
+                association = record.class.reflect_on_association(attribute)
+                association.respond_to?(:foreign_key)  ? record[association.foreign_key] : record[association.association_foreign_key]
+              else
+                value
+              end
+            next if (target_id.nil? && value.nil? && options[:allow_nil]) || (value.blank? && options[:allow_blank])
+            validate_each(record, attribute, value)
+          end
+        end
+
         def validate_each(record, attribute, value)
           normalized = attribute.to_s.sub(/_id$/, "").to_sym
           association = record.class.reflect_on_association(normalized)

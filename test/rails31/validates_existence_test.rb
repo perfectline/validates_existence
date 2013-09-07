@@ -59,6 +59,10 @@ class TestValidatesExistence < Test::Unit::TestCase
     assert_equal UserWithPolyAllowNil.new.save, true
   end
 
+  def test_poly_relation_with_allow_nil_with_value
+    assert_equal UserWithPolyAllowNil.new(:relation_id => 599, :name_id => 1000).save, false
+  end
+
   def test_argument_error
     assert_raise ArgumentError do
       UserWithHasMany.new.save
