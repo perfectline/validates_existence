@@ -86,12 +86,19 @@ This would be your customized en.yaml:
           messages:
             existence: "has gone missing!"
 
-## Honorable mentions
-This plugin is inspired by ideas from **Josh Susser**
 
-## Authors
-**Tanel Suurhans** - tanel.suurhans_at_perfectline_d0t_ee  
-**Tarmo Lehtpuu** - tarmo.lehtpuu_at_perfectline_d0t_ee
+
+
+
+## Contributing
+
+Big thanks to Tanel Suurhans, Tarmo Lehtpuu, Josh Susser and all the [contributors](https://github.com/perfectline/validates_existence/contributors)! We appreciate all your work on new features and bugfixes.
+
+## Credits
+
+Coffee Middleware is created and maintained by [PerfectLine](http://www.perfectline.co), LLC.
 
 ## License
-Copyright 2010 by PerfectLine LLC (<http://www.perfectline.co.uk>) and is released under the MIT license.
+
+Coffee Middleware is Copyright © 2009-2014 [PerfectLine](http://www.perfectline.co), LLC. It is free software, and may be
+redistributed under the terms specified in the LICENSE file.
