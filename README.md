@@ -96,9 +96,9 @@ Big thanks to Tanel Suurhans, Tarmo Lehtpuu, Josh Susser and all the [contributo
 
 ## Credits
 
-Coffee Middleware is created and maintained by [PerfectLine](http://www.perfectline.co), LLC.
+Validates Existence is created and maintained by [PerfectLine](http://www.perfectline.co), LLC.
 
 ## License
 
-Coffee Middleware is Copyright © 2009-2014 [PerfectLine](http://www.perfectline.co), LLC. It is free software, and may be
+Validates Existence is Copyright © 2009-2014 [PerfectLine](http://www.perfectline.co), LLC. It is free software, and may be
 redistributed under the terms specified in the LICENSE file.
