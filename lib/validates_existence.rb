@@ -68,7 +68,7 @@ module Perfectline
         end
 
         def exists?(target_class, value)
-          (options[:allow_new] && value.new_record?) || target_class.exists?(value)
+          (options[:allow_new] && value.new_record?) || (value.persisted? && target_class.exists?(value.id))
         end
       end
     end
